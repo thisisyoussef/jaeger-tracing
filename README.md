@@ -1,82 +1,97 @@
 # Jaeger Tracing
 
-This project demonstrates the implementation of distributed tracing using Jaeger in a Node.js application. Distributed tracing is a powerful tool for observing and analyzing the performance of your services, helping you to identify bottlenecks and optimize your application's efficiency.
+Jaeger Tracing is a distributed tracing system that enables developers to monitor and troubleshoot transactions in complex distributed systems. It can be used for monitoring microservices-based architectures, and it provides visualizations of call flows between services. This repository contains a sample project that demonstrates how to integrate Jaeger Tracing in a Node.js application.
+
+## Table of Contents
+
+1. [Project Overview](#project-overview)
+2. [Installation Instructions](#installation-instructions)
+3. [Usage Guide](#usage-guide)
+4. [Features and Functionality](#features-and-functionality)
+5. [Contributing Guidelines](#contributing-guidelines)
+6. [License Information](#license-information)
+7. [Contact Information](#contact-information)
 
 ## Project Overview
 
-This project consists of a simple Node.js application that simulates multiple service calls using Jaeger tracer to record and visualize the flow of requests across services. The main files in the project are:
+This project implements a simple Node.js application demonstrating how to integrate Jaeger Tracing for monitoring and troubleshooting purposes. Key technologies and tools used in this project, along with their relevance, are as follows:
 
-- `index.js`: The entry point of the application that contains the logic for simulating the service calls.
-- `tracing.js`: The module responsible for initializing and configuring the Jaeger tracer.
-- `package.json`: Contains the project's metadata and dependencies.
+- **Node.js**: As a server-side JavaScript runtime, Node.js provides an efficient and lightweight environment for building scalable and high-performance applications. In this project, Node.js serves as the foundation for the application logic.
+
+- **Jaeger Tracing**: Jaeger Tracing is a distributed tracing system that helps monitor and troubleshoot transactions in complex distributed systems. In this project, Jaeger Tracing is used to trace the requests between services and visualize the call flows.
+
+- **Express**: Express is a popular web application framework for Node.js, providing a minimal and unopinionated framework for this project's server setup.
 
 ## Installation Instructions
 
-To run the project, follow these steps:
+1. Clone the repository:
 
-1. Ensure that you have Node.js installed on your system. If not, download and install it from the [official website](https://nodejs.org/).
-2. Clone the repository to your local machine:
-
-```sh
+```
 git clone https://github.com/thisisyoussef/jaeger-tracing.git
 ```
 
-3. Change to the project directory:
+2. Navigate to the project directory:
 
-```sh
+```
 cd jaeger-tracing
 ```
 
-4. Install the dependencies:
+3. Install the required dependencies:
 
-```sh
-npm install
 ```
-
-5. Start the application:
-
-```sh
-npm start
+npm install
 ```
 
 ## Usage Guide
 
-To visualize the traces, you need to have Jaeger installed and running on your system. For installation and configuration instructions, refer to the [official Jaeger documentation](https://www.jaegertracing.io/docs/1.22/getting-started/).
+1. Start the Jaeger Tracing server using Docker (make sure you have Docker installed):
 
-Once Jaeger is up and running, you can start the application as described in the previous section. The application will generate and send traces to the Jaeger backend, which can be viewed in the Jaeger UI.
+```
+docker run -d --name jaeger \
+  -e COLLECTOR_ZIPKIN_HOST_PORT=:9411 \
+  -p 5775:5775/udp \
+  -p 6831:6831/udp \
+  -p 6832:6832/udp \
+  -p 5778:5778 \
+  -p 16686:16686 \
+  -p 14268:14268 \
+  -p 9411:9411 \
+  jaegertracing/all-in-one:latest
+```
+
+2. Run the Node.js application:
+
+```
+npm start
+```
+
+3. Open the Jaeger Tracing UI in your browser: http://localhost:16686
 
 ## Features and Functionality
 
-This project demonstrates the following key features:
+- Distributed tracing with Jaeger Tracing: Monitors and visualizes the call flows between services within the application.
 
-- Initializing a Jaeger Tracer in a Node.js application
-- Using the Jaeger Tracer to create and manage spans for service calls
-- Configuring the Tracer to report traces to the Jaeger backend system
-
-By understanding how to implement these features in your applications, you can better leverage the benefits of distributed tracing and gain insights into your service performance.
+- Node.js and Express-based server setup: Provides a scalable and high-performance foundation for the application.
 
 ## Contributing Guidelines
 
-We welcome any contributions from the community. To contribute, please follow these steps:
+Contributions to this project are welcome. Please follow these steps to contribute:
 
-1. Fork the project repository and create a new branch for your feature or bugfix.
-2. Commit your changes to the new branch and create a pull request to the main repository.
-3. Make sure to follow proper coding standards and include appropriate tests and documentation.
+1. Fork the repository.
+2. Create a branch with a descriptive name.
+3. Implement your changes or additions.
+4. Ensure that your code follows the project's coding style and conventions.
+5. Create a pull request, describing the changes you made and why they are necessary.
+6. Wait for the project maintainer to review and merge your changes.
 
 ## License Information
 
-This project is available under the MIT License. For more details, please see the [LICENSE](LICENSE) file.
+This project is licensed under the MIT License. For more details, please see the [LICENSE](LICENSE) file.
 
 ## Contact Information
 
-For further information or inquiries, please feel free to reach out at [thisisyoussef](mailto:thisisyoussef@example.com).
+For any questions or suggestions regarding this project, please feel free to reach out:
 
-## Technologies and Tools Used
-
-This project utilizes the following technologies and tools:
-
-- Node.js: A JavaScript runtime environment that allows you to run server-side code.
-- Jaeger: An open-source distributed tracing system that provides complete distributed context propagation, metric collection, and visualization.
-- OpenTracing API: A vendor-neutral API for distributed tracing that allows you to instrument your application with different tracing backends, such as Jaeger.
-
-These technologies and tools contribute to the project's functionality and performance by providing a robust, scalable, and efficient environment for implementing distributed tracing in Node.js applications.
+Name: Youssef
+Email: thisisyoussef@example.com
+GitHub: https://github.com/thisisyoussef
